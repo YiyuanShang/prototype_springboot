@@ -13,9 +13,7 @@ public class UrlLocaleInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
 		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-		
 		
 		if (localeResolver == null) {
 			throw new IllegalStateException("No LocaleResolver found: not in a DispatcherServlet request");

@@ -20,19 +20,19 @@ import com.prototype.i18n.util.LanguageCode;
  */
 @Configuration
 public class UrlPathConfig implements WebMvcConfigurer{
-	@Bean(name = "localeResolver")
-	public LocaleResolver urlPathLocaleResolver() {
-		UrlPathLocaleResolver resolver = new UrlPathLocaleResolver();
-		resolver.setDefaultLocale(Locale.ENGLISH);
-		return resolver;
-	}
-
 //	@Bean(name = "localeResolver")
-//	public LocaleResolver sessionLocaleResolver() {
-//		UrlPathSessionLocaleResolver resolver = new UrlPathSessionLocaleResolver();
+//	public LocaleResolver urlPathLocaleResolver() {
+//		UrlPathLocaleResolver resolver = new UrlPathLocaleResolver();
 //		resolver.setDefaultLocale(Locale.ENGLISH);
 //		return resolver;
 //	}
+
+	@Bean(name = "localeResolver")
+	public LocaleResolver sessionLocaleResolver() {
+		UrlPathSessionLocaleResolver resolver = new UrlPathSessionLocaleResolver();
+		resolver.setDefaultLocale(Locale.ENGLISH);
+		return resolver;
+	}
 //	
 //	@Bean(name = "localeResolver")
 //	public LocaleResolver cookieLocaleResolver() {
@@ -51,7 +51,8 @@ public class UrlPathConfig implements WebMvcConfigurer{
 
 		// process each enumeration value to correct path pattern
 		enumValues.forEach(enumValue -> processedEnumValues.add("/" + enumValue.toString() + "/*"));
-
+		System.out.println("processed enum values:" + processedEnumValues);
+		
 		interceptorRegistry.addInterceptor(localeInterceptor).addPathPatterns(processedEnumValues);
 
 	}
