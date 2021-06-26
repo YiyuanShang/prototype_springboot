@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class I18nController {
 	
-	@RequestMapping({"/index", "/{lang}/index"})
-	public String gotoIndex(@PathVariable(required=false) String lang) {
+	@RequestMapping("/index")
+	public String gotoIndex() {
 		return "index";
 	}
 	
