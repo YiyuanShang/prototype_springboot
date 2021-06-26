@@ -10,8 +10,11 @@ import com.prototype.i18n.util.LanguageCode;
 
 
 public class UrlPathCookieLocaleResolver extends CookieLocaleResolver{
-	@Override
-	public Locale resolveLocale(HttpServletRequest request) {
+	public Locale resolveUrlPathLocale(HttpServletRequest request) {
+		System.out.println("entering overriden resolveLocale");
+		Locale locale = super.resolveLocale(request);
+		System.out.println("locale before:" + locale);
+		
 		String url = request.getRequestURI();
 		System.out.println("url:" + url);
 
@@ -19,8 +22,6 @@ public class UrlPathCookieLocaleResolver extends CookieLocaleResolver{
 		String prefixFr = request.getServletContext().getContextPath() + "/" + LanguageCode.fr + "/";
 		String prefixZh = request.getServletContext().getContextPath() + "/" + LanguageCode.zh + "/";
 
-		Locale locale = Locale.getDefault();
-        System.out.println("default locale:" + locale);
 		if (url.startsWith(prefixEn)) {
 			locale = Locale.ENGLISH;
 		} else if (url.startsWith(prefixFr)) {
@@ -28,7 +29,8 @@ public class UrlPathCookieLocaleResolver extends CookieLocaleResolver{
 		} else if (url.startsWith(prefixZh)) {
 			locale = Locale.CHINESE;
 		}
-
+		System.out.println("locale after:" + locale);
 		return locale;
 	}
+	
 }

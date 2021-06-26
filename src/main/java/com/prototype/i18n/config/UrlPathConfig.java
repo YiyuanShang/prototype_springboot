@@ -33,14 +33,14 @@ public class UrlPathConfig implements WebMvcConfigurer{
 		resolver.setDefaultLocale(Locale.ENGLISH);
 		return resolver;
 	}
-//	
+	
 //	@Bean(name = "localeResolver")
 //	public LocaleResolver cookieLocaleResolver() {
-//		UrlPathSessionLocaleResolver resolver = new UrlPathSessionLocaleResolver();
+//		UrlPathCookieLocaleResolver resolver = new UrlPathCookieLocaleResolver();
 //		resolver.setDefaultLocale(Locale.ENGLISH);
 //		return resolver;
 //	}
-//	
+	
 
 	@Override
 	public void addInterceptors(InterceptorRegistry interceptorRegistry) {
