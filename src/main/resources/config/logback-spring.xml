@@ -5,8 +5,10 @@
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
 	<property name="FILE_LOG_PATTERN"
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
+	<property name="LOG_FILE_MAX_FILE_SIZE" value="100MB" />
 	<property name="LOG_FILE_MAX_HISTORY" value="30" />
-
+	<property name="LOG_FILE_TOTAL_SIZE_CAP" value="20GB" />
+	
 
 	<!-- Console -->
 	<appender name="console"
@@ -20,10 +22,12 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/info/info.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>info/info-%d{yyyy-MM-dd}.log
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>info/info-%d{yyyy-MM-dd}.%i.log
 			</fileNamePattern>
-			<MaxHistory>${LOG_FILE_MAX_HISTORY}</MaxHistory>
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
+			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
@@ -40,9 +44,11 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/debug/debug.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>debug/debug-%d{yyyy-MM-dd}.log</fileNamePattern>
-			<MaxHistory>${LOG_FILE_MAX_HISTORY}</MaxHistory>
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>debug/debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
+			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
@@ -59,10 +65,12 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/warn/warn.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>warn/warn-%d{yyyy-MM-dd}.log
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>warn/warn-%d{yyyy-MM-dd}.%i.log
 			</fileNamePattern>
-			<MaxHistory>${LOG_FILE_MAX_HISTORY}</MaxHistory>
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
+			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
@@ -79,10 +87,12 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/error/error.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>error/error-%d{yyyy-MM-dd}.log
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>error/error-%d{yyyy-MM-dd}.%i.log
 			</fileNamePattern>
-			<MaxHistory>${LOG_FILE_MAX_HISTORY}</MaxHistory>
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
+			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
@@ -94,23 +104,7 @@
 		</filter>
 	</appender>
 
-	<!-- <logger name="org.springframework" additivity="false">
-		<level value="ERROR" />
-		<appender-ref ref="console" />
-		<appender-ref ref="errorAppender" />
-	</logger> -->
 	
-	<!-- <logger name="org.apache.tomcat.util" additivity="false">
-		<level value="ERROR" />
-		<appender-ref ref="console" />
-		<appender-ref ref="errorAppender" />
-	</logger>
-	
-	<logger name="org.hibernate.validator" additivity="false">
-		<level value="ERROR" />
-		<appender-ref ref="console" />
-		<appender-ref ref="errorAppender" />
-	</logger> -->
 
 	<root level="DEBUG">
 		<appender-ref ref="console" />
