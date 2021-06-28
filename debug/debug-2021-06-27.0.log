@@ -1,0 +1,8 @@
+[2021-06-27 10:16:34] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-27 10:17:41] -- [DEBUG]: [com.prototype.controller.Controller] -- This is a debug message
+[2021-06-27 10:28:31] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-27 10:28:53] -- [DEBUG]: [com.prototype.controller.Controller] -- This is a debug message
+[2021-06-27 11:53:05] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplicationTests] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-27 13:44:54] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-27 14:03:01] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-27 14:13:20] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8

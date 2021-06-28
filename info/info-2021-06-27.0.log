@@ -1,0 +1,20 @@
+[2021-06-27 10:16:34] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Starting PrototypeSpringbootApplication using Java 11.0.5 on Marie-laptop.local with PID 37847 (/Users/yiyuanshang/study/prototype_springboot/target/classes started by yiyuanshang in /Users/yiyuanshang/study/prototype_springboot)
+[2021-06-27 10:16:34] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- No active profile set, falling back to default profiles: default
+[2021-06-27 10:16:35] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Started PrototypeSpringbootApplication in 1.565 seconds (JVM running for 2.353)
+[2021-06-27 10:17:41] -- [INFO ]: [com.prototype.controller.Controller] -- This is a info message
+[2021-06-27 10:28:31] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Starting PrototypeSpringbootApplication using Java 11.0.5 on Marie-laptop.local with PID 37994 (/Users/yiyuanshang/study/prototype_springboot/target/classes started by yiyuanshang in /Users/yiyuanshang/study/prototype_springboot)
+[2021-06-27 10:28:31] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- No active profile set, falling back to default profiles: default
+[2021-06-27 10:28:32] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Started PrototypeSpringbootApplication in 1.742 seconds (JVM running for 2.598)
+[2021-06-27 10:28:53] -- [INFO ]: [com.prototype.controller.Controller] -- This is a info message
+[2021-06-27 11:53:05] -- [INFO ]: [com.prototype.PrototypeSpringbootApplicationTests] -- Starting PrototypeSpringbootApplicationTests using Java 11.0.5 on Marie-laptop.local with PID 38919 (started by yiyuanshang in /Users/yiyuanshang/study/prototype_springboot)
+[2021-06-27 11:53:05] -- [INFO ]: [com.prototype.PrototypeSpringbootApplicationTests] -- No active profile set, falling back to default profiles: default
+[2021-06-27 11:53:07] -- [INFO ]: [com.prototype.PrototypeSpringbootApplicationTests] -- Started PrototypeSpringbootApplicationTests in 2.086 seconds (JVM running for 3.122)
+[2021-06-27 13:44:54] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Starting PrototypeSpringbootApplication using Java 11.0.5 on Marie-laptop.local with PID 39235 (/Users/yiyuanshang/study/prototype_springboot/target/classes started by yiyuanshang in /Users/yiyuanshang/study/prototype_springboot)
+[2021-06-27 13:44:54] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- No active profile set, falling back to default profiles: default
+[2021-06-27 13:44:55] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Started PrototypeSpringbootApplication in 1.753 seconds (JVM running for 2.803)
+[2021-06-27 14:03:01] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Starting PrototypeSpringbootApplication using Java 11.0.5 on Marie-laptop.local with PID 39566 (/Users/yiyuanshang/study/prototype_springboot/target/classes started by yiyuanshang in /Users/yiyuanshang/study/prototype_springboot)
+[2021-06-27 14:03:01] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- No active profile set, falling back to default profiles: default
+[2021-06-27 14:03:02] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Started PrototypeSpringbootApplication in 1.548 seconds (JVM running for 2.368)
+[2021-06-27 14:13:20] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Starting PrototypeSpringbootApplication using Java 11.0.5 on Marie-laptop.local with PID 39770 (/Users/yiyuanshang/study/prototype_springboot/target/classes started by yiyuanshang in /Users/yiyuanshang/study/prototype_springboot)
+[2021-06-27 14:13:20] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- No active profile set, falling back to default profiles: default
+[2021-06-27 14:13:21] -- [INFO ]: [com.prototype.PrototypeSpringbootApplication] -- Started PrototypeSpringbootApplication in 1.417 seconds (JVM running for 2.194)
