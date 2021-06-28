@@ -7,9 +7,11 @@ import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 import com.prototype.i18n.util.LanguageCode;
 
@@ -20,13 +22,6 @@ import com.prototype.i18n.util.LanguageCode;
  */
 @Configuration
 public class UrlPathConfig implements WebMvcConfigurer{
-//	@Bean(name = "localeResolver")
-//	public LocaleResolver urlPathLocaleResolver() {
-//		UrlPathLocaleResolver resolver = new UrlPathLocaleResolver();
-//		resolver.setDefaultLocale(Locale.ENGLISH);
-//		return resolver;
-//	}
-
 	@Bean(name = "localeResolver")
 	public LocaleResolver sessionLocaleResolver() {
 		UrlPathSessionLocaleResolver resolver = new UrlPathSessionLocaleResolver();
@@ -34,12 +29,21 @@ public class UrlPathConfig implements WebMvcConfigurer{
 		return resolver;
 	}
 	
-//	@Bean(name = "localeResolver")
-//	public LocaleResolver cookieLocaleResolver() {
-//		UrlPathCookieLocaleResolver resolver = new UrlPathCookieLocaleResolver();
-//		resolver.setDefaultLocale(Locale.ENGLISH);
-//		return resolver;
-//	}
+	@Bean(name = "localeResolver")
+	public LocaleResolver urlPathLocaleResolver() {
+		UrlPathLocaleResolver resolver = new UrlPathLocaleResolver();
+		resolver.setDefaultLocale(Locale.ENGLISH);
+		return resolver;
+	}
+
+		
+	@Bean(name = "localeResolver")
+	public LocaleResolver cookieLocaleResolver() {
+		UrlPathCookieLocaleResolver resolver = new UrlPathCookieLocaleResolver();
+		resolver.setDefaultLocale(Locale.ENGLISH);
+		return resolver;
+	}
+	
 	
 
 	@Override

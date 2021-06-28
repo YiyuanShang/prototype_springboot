@@ -9,7 +9,7 @@ public class I18nController {
 	
 	@RequestMapping({"/index", "/{lang}/index"})
 	public String gotoIndex(@PathVariable(required=false) String lang) {
-		return "index";
+		return "/index";
 	}
 	
 	

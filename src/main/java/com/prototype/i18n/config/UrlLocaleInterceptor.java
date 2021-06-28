@@ -13,14 +13,15 @@ public class UrlLocaleInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		UrlPathSessionLocaleResolver localeResolver = (UrlPathSessionLocaleResolver) RequestContextUtils.getLocaleResolver(request);
+		
+		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
 		
 		if (localeResolver == null) {
 			throw new IllegalStateException("No LocaleResolver found: not in a DispatcherServlet request");
 		}
 		System.out.println(localeResolver.getClass().getName());
 		// Get locale from LocaleResolver
-		Locale locale = localeResolver.resolveUrlPathLocale(request);
+		Locale locale = localeResolver.resolveLocale(request);
 		localeResolver.setLocale(request, response, locale);
 
 		return true;
