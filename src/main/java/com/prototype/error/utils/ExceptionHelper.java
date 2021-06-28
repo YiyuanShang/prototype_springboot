@@ -14,16 +14,15 @@ import com.prototype.error.exceptions.PersonNotFoundException;
 
 //@ControllerAdvice
 //@ControllerAdvice(annotations=RestController.class)
-@ControllerAdvice(basePackages = "com.prototype.error.controller")
+//@ControllerAdvice(basePackages = "com.prototype.error.controller")
 //@ControllerAdvice(assignableTypes = {ErrorController.class})
 public class ExceptionHelper {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ErrorController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionHelper.class);
 	
-	@ExceptionHandler(PersonNotFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public ResponseEntity<String> handlePersonNotFoundException(PersonNotFoundException exception) {
-		LOGGER.error("Person Not Found:" + exception.getMessage());
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
-	}
+//	@ExceptionHandler(PersonNotFoundException.class)
+//	public ResponseEntity<String> handlePersonNotFoundException(PersonNotFoundException exception) {
+//		LOGGER.error(exception.getMessage());
+//		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+//	}
 
 }

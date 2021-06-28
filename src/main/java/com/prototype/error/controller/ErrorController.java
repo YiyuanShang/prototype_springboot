@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prototype.error.exceptions.PersonNotFoundException;
+import com.prototype.error.utils.ExceptionHelper;
 
 @RestController
 public class ErrorController {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ErrorController.class);
+	
 	@GetMapping("/error1/notfound")
-	public ResponseEntity<String> getErrorNotFound() {
+	public Object getErrorNotFound() {
+		LOGGER.debug("entering /error1/notfound");
 		throw new PersonNotFoundException("Person Not Found Message");
 	}
 
