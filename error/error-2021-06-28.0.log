@@ -1,0 +1,7 @@
+[2021-06-28 21:41:26] -- [ERROR]: [com.prototype.controller.Controller] -- This is a error message
+[2021-06-28 21:42:47] -- [ERROR]: [com.prototype.controller.Controller] -- This is a error message
+[2021-06-28 21:43:13] -- [ERROR]: [com.prototype.controller.Controller] -- This is a error message
+[2021-06-28 21:43:23] -- [ERROR]: [com.prototype.controller.Controller] -- This is a error message
+[2021-06-28 22:02:23] -- [ERROR]: [com.prototype.error.utils.ExceptionHelper] -- Person Not Found Message
+[2021-06-28 22:05:36] -- [ERROR]: [com.prototype.error.utils.ExceptionHelper] -- Person Not Found Message
+[2021-06-28 22:07:56] -- [ERROR]: [com.prototype.error.utils.ExceptionHelper] -- Person Not Found Message

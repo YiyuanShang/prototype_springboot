@@ -1,0 +1,16 @@
+[2021-06-28 20:34:39] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 20:47:29] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 21:40:23] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 21:41:26] -- [DEBUG]: [com.prototype.controller.Controller] -- This is a debug message
+[2021-06-28 21:42:39] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 21:42:47] -- [DEBUG]: [com.prototype.controller.Controller] -- This is a debug message
+[2021-06-28 21:43:13] -- [DEBUG]: [com.prototype.controller.Controller] -- This is a debug message
+[2021-06-28 21:43:23] -- [DEBUG]: [com.prototype.controller.Controller] -- This is a debug message
+[2021-06-28 21:53:58] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 22:02:11] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 22:02:23] -- [DEBUG]: [com.prototype.error.controller.ErrorController] -- entering /error1/notfound
+[2021-06-28 22:05:29] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 22:05:36] -- [DEBUG]: [com.prototype.error.controller.ErrorController] -- entering /error1/notfound
+[2021-06-28 22:06:39] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
+[2021-06-28 22:07:56] -- [DEBUG]: [com.prototype.error.controller.ErrorController] -- entering /error1/notfound
+[2021-06-28 22:09:45] -- [DEBUG]: [com.prototype.PrototypeSpringbootApplication] -- Running with Spring Boot v2.5.1, Spring v5.3.8
