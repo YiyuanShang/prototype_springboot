@@ -5,7 +5,8 @@
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
 	<property name="FILE_LOG_PATTERN"
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
-	<property name="LOG_FILE_MAX_FILE_SIZE" value="100MB" />
+		
+	<!-- keep 30 days' worth of history capped at 20GB total size -->
 	<property name="LOG_FILE_MAX_HISTORY" value="30" />
 	<property name="LOG_FILE_TOTAL_SIZE_CAP" value="20GB" />
 	
@@ -22,10 +23,9 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/info/info.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>info/info-%d{yyyy-MM-dd}.%i.log
-			</fileNamePattern>
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			 <!-- daily rollover -->
+			<fileNamePattern>info/info-%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
 			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
@@ -44,9 +44,9 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/debug/debug.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>debug/debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			 <!-- daily rollover -->
+			<fileNamePattern>debug/debug-%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
 			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
@@ -65,10 +65,9 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/warn/warn.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>warn/warn-%d{yyyy-MM-dd}.%i.log
-			</fileNamePattern>
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			 <!-- daily rollover -->
+			<fileNamePattern>warn/warn-%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
 			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
@@ -87,10 +86,9 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/error/error.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>error/error-%d{yyyy-MM-dd}.%i.log
-			</fileNamePattern>
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			 <!-- daily rollover -->
+			<fileNamePattern>error/error-%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>${LOG_FILE_MAX_HISTORY}</maxHistory>
 			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP}</totalSizeCap>
 		</rollingPolicy>
