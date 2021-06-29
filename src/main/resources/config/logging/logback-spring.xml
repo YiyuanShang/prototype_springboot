@@ -5,7 +5,7 @@
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
 	<property name="FILE_LOG_PATTERN"
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
-	<property name="LOG_FILE_MAX_FILE_SIZE" value="100MB" />
+	<property name="LOG_FILE_MAX_FILE_SIZE" value="2KB" />
 
 
 	<!-- Console -->
