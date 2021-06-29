@@ -6,7 +6,7 @@
 	<property name="FILE_LOG_PATTERN"
 		value="[%d{yyyy-MM-dd HH:mm:ss}] -- [%-5p]: [%c] -- %m%n" />
 	<property name="LOG_FILE_MAX_FILE_SIZE" value="100MB" />
-	
+
 
 	<!-- Console -->
 	<appender name="console"
@@ -20,9 +20,15 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/info/info.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>infos.%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
 		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>
+		</triggeringPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
@@ -38,9 +44,15 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/debug/debug.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>debugs.%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
 		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>
+		</triggeringPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
@@ -56,9 +68,15 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/warn/warn.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>warns.%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
 		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>
+		</triggeringPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
@@ -74,9 +92,15 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_PATH}/error/error.log</file>
 		<rollingPolicy
-			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>    
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>errors.%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
 		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>${LOG_FILE_MAX_FILE_SIZE}</maxFileSize>
+		</triggeringPolicy>
 		<encoder>
 			<pattern>${FILE_LOG_PATTERN}</pattern>
 		</encoder>
@@ -87,7 +111,7 @@
 		</filter>
 	</appender>
 
-	
+
 
 	<root level="DEBUG">
 		<appender-ref ref="console" />
