@@ -1,4 +1,4 @@
-package com.prototype.config;
+package com.athensoft.prototype.config;
 
 import org.springframework.context.annotation.Profile;
 

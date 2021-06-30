@@ -1,4 +1,4 @@
-package com.prototype.error.config;
+package com.athensoft.prototype.error.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

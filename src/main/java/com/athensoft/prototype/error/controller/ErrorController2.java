@@ -1,10 +1,10 @@
-package com.prototype.error.controller;
+package com.athensoft.prototype.error.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.prototype.error.exceptions.PersonNotFoundException;
+import com.athensoft.prototype.error.exceptions.PersonNotFoundException;
 
 @Controller
 public class ErrorController2 {
