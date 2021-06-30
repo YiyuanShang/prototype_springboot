@@ -16,8 +16,8 @@
 						<th>Name</th>
 						<th>Age</th>
 						<th>Membership</th>
-						<!-- <th>Edit</th>
-						<th>Delete</th> -->
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,8 +29,8 @@
 						<span th:if="${user.membership}" th:style="'color:green'">yes</span>
 						<span th:unless="${user.membership}" th:style="'color:red'">no</span>
 						</td>
-						<!-- <td><a th:href="@{/user/edit/${user.userId}}">Edit</a></td>
-						<td><a th:href="@{/user/delete/{userId}(id=${user.userId})}">Delete</a></td> -->
+						<td><a th:href="@{/user/edit/{id}(id=${user.userId})}">Edit</a></td>
+						<td><a th:href="@{/user/delete/{id}(id=${user.userId})}">Delete</a></td> 
 					</tr>
 				</tbody>
 			</table>

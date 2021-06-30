@@ -42,13 +42,26 @@ public class UserController {
 		return "user/user_list";
 	}
 	
-	@GetMapping("/user/edit/{userId}")
-	public String showUpdateForm(@PathVariable("userId") int id, Model model) {
-	    User user = repository.findById(id)
+	@GetMapping("/user/edit/{id}")
+	public String showUpdateForm(@PathVariable("id") String id, Model model) {
+		LOGGER.debug("entering showUpdateForm id:" + id);
+		int userId = Integer.valueOf(id);
+	    User user = repository.findById(userId)
 	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 	    
 	    model.addAttribute("user", user);
 	    return "user/user_edit";
+	}
+	
+	@GetMapping("/user/delete/{id}")
+	public String showDeleteForm(@PathVariable("id") String id, Model model) {
+		LOGGER.debug("entering showDeleteForm id:" + id);
+		int userId = Integer.valueOf(id);
+	    User user = repository.findById(userId)
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+	    
+	    model.addAttribute("user", user);
+	    return "user/user_delete";
 	}
 	
 	@PostMapping("/user/add")
@@ -60,16 +73,32 @@ public class UserController {
         return "redirect:/user/list";
     }
 	
-	@PostMapping("/user/update/{userId}")
-	public String updateUser(@PathVariable("userId") int userId, @Valid User user, 
+	@PostMapping("/user/update")
+	public String updateUser(@Valid @ModelAttribute("user") User user, 
 	  BindingResult result, Model model) {
 	    if (result.hasErrors()) {
+			int userId = user.getUserId();
 	        user.setUserId(userId);
 	        return "user/user_edit";
 	    }
-	   
+	    
+	    LOGGER.info("update user:" + user);
 	    repository.save(user);
-	    return "redirect:/index";
+	    return "redirect:/user/list";
+	}
+	
+	@PostMapping("/user/delete")
+	public String deleteUser(@Valid @ModelAttribute("user") User user, 
+	  BindingResult result, Model model) {
+	    if (result.hasErrors()) {
+			int userId = user.getUserId();
+	        user.setUserId(userId);
+	        return "user/user_delete";
+	    }
+	    
+	    LOGGER.info("delete user:" + user);
+	    repository.delete(user);
+	    return "redirect:/user/list";
 	}
 	
 
