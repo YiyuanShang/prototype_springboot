@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.athensoft.prototype.mvc.entity.User;
 import com.athensoft.prototype.mvc.dao.UserRepository;
@@ -24,7 +25,7 @@ import com.athensoft.prototype.mvc.service.UserService;
 
 
 
-@Controller
+@RestController
 public class UserController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	
@@ -35,35 +36,36 @@ public class UserController {
 	}
 	
 	@GetMapping("/users")
-	public ResponseEntity<List<User>> getUserListAll() {
+	public List<User> getUserListAll() {
 		return userService.getUserListAll();
 	}
 	
 	@GetMapping("/users/{userId}")
-	public ResponseEntity<User> getUserById(@PathVariable int userId) {
+	public User getUserById(@PathVariable int userId) {
 		return userService.getUserById(userId);
 	}
 	
-	
 	@PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-		LOGGER.debug("create user:" + user);
+    public User createUser(@RequestBody User user) {
+		LOGGER.info("create user:" + user);
         return userService.saveUser(user);
     }
 	
 	@PutMapping("/users")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-		LOGGER.debug("update user:" + user);
+    public User updateUser(@RequestBody User user) {
+		LOGGER.info("update user:" + user);
         return userService.saveUser(user);
     }
 	
 	@DeleteMapping("/users/{userId}")
-    public ResponseEntity<String> deleteUserById(@PathVariable int userId) {
+    public String deleteUserById(@PathVariable int userId) {
+		LOGGER.info("delete user by user id " + userId);
         return userService.deleteUserById(userId);
     }
 	
 	@DeleteMapping("/users")
-    public ResponseEntity<String> deleteUser(@RequestBody User user) {
+    public String deleteUser(@RequestBody User user) {
+		LOGGER.info("delete user:" + user);
         return userService.deleteUser(user);
     }
 	
