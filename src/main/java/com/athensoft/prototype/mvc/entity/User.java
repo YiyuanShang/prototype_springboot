@@ -1,4 +1,4 @@
-package com.prototype.thymeleaf.entity;
+package com.athensoft.prototype.mvc.entity;
 
 import java.io.Serializable;
 

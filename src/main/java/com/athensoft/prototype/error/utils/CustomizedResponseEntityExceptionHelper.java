@@ -1,4 +1,4 @@
-package com.prototype.error.utils;
+package com.athensoft.prototype.error.utils;
 
 import java.util.Date;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.prototype.error.controller.ErrorController;
-import com.prototype.error.entity.ErrorDetails;
-import com.prototype.error.exceptions.PersonNotFoundException;
+import com.athensoft.prototype.error.controller.ErrorController;
+import com.athensoft.prototype.error.entity.ErrorDetails;
+import com.athensoft.prototype.error.exceptions.PersonNotFoundException;
 
 //@ControllerAdvice
 //@ControllerAdvice(annotations=RestController.class)

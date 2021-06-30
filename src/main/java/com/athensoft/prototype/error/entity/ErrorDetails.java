@@ -1,4 +1,4 @@
-package com.prototype.error.entity;
+package com.athensoft.prototype.error.entity;
 
 import java.util.Date;
 

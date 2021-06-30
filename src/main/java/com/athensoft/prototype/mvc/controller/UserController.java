@@ -1,4 +1,4 @@
-package com.prototype.thymeleaf.controller;
+package com.athensoft.prototype.mvc.controller;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.prototype.thymeleaf.entity.User;
-import com.prototype.thymeleaf.service.UserRepository;
+import com.athensoft.prototype.mvc.entity.User;
+import com.athensoft.prototype.mvc.dao.UserRepository;
 
 
 @Controller

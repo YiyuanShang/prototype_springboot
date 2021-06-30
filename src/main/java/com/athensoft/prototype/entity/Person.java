@@ -1,4 +1,4 @@
-package com.prototype.entity;
+package com.athensoft.prototype.entity;
 
 public class Person {
 	private String name;
