@@ -47,23 +47,25 @@ public class UserController {
 	
 	@PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-		LOGGER.debug("create user:" + user);
+		LOGGER.debug("creating user:" + user);
         return userService.saveUser(user);
     }
 	
 	@PutMapping("/users")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
-		LOGGER.debug("update user:" + user);
+		LOGGER.debug("updating user:" + user);
         return userService.saveUser(user);
     }
 	
 	@DeleteMapping("/users/{userId}")
-    public ResponseEntity<String> deleteUserById(@PathVariable int userId) {
+    public ResponseEntity<User> deleteUserById(@PathVariable int userId) {
+		LOGGER.debug("deleting user id:" + userId);
         return userService.deleteUserById(userId);
     }
 	
 	@DeleteMapping("/users")
-    public ResponseEntity<String> deleteUser(@RequestBody User user) {
+    public ResponseEntity<User> deleteUser(@RequestBody User user) {
+		LOGGER.debug("deleting user:" + user);
         return userService.deleteUser(user);
     }
 	
