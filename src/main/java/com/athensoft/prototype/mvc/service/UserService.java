@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.athensoft.prototype.error.exceptions.UserAlreadyExistsException;
+import com.athensoft.prototype.error.exceptions.UserNotFoundException;
 import com.athensoft.prototype.mvc.dao.UserRepository;
 import com.athensoft.prototype.mvc.entity.User;
 
@@ -25,31 +27,46 @@ public class UserService {
 	}
 
 	public User getUserById(int userId) {
-		try {
-			return repo.findById(userId).get();
-		} catch (NoSuchElementException e) {
-			throw new NoSuchElementException("User does not exist");
+		if (!repo.existsById(userId)) {
+			throw new UserNotFoundException();
 		}
+		User user = repo.findById(userId).get();
+		return user;
+	}
+
+	public User createUser(User user) {
+		if (repo.existsById(user.getUserId())) {
+			throw new UserAlreadyExistsException();
+		}
+		return repo.save(user);
 	}
 
 	public User saveUser(User user) {
 		return repo.save(user);
 	}
 
-	public String deleteUserById(int userId) {
-		try {
-			repo.deleteById(userId);
-			return "Success";
-		} catch (EmptyResultDataAccessException e) {
-			return "User does not exist";
+	public User updateUser(User user) {
+		if (!repo.existsById(user.getUserId())) {
+			throw new UserNotFoundException();
 		}
-
+		return repo.save(user);
 	}
 
-	public String deleteUser(User user) {
-		repo.delete(user);
-		return "Success";
+	public User deleteUserById(int userId) {
+		if (!repo.existsById(userId)) {
+			throw new UserNotFoundException();
+		}
+		User user = repo.findById(userId).get();
+		repo.deleteById(userId);
+		return user;
+	}
 
+	public User deleteUser(User user) {
+		if (!repo.existsById(user.getUserId())) {
+			throw new UserNotFoundException();
+		}
+		repo.delete(user);
+		return user;
 	}
 
 }

@@ -58,13 +58,13 @@ public class UserController {
     }
 	
 	@DeleteMapping("/users/{userId}")
-    public String deleteUserById(@PathVariable int userId) {
+    public User deleteUserById(@PathVariable int userId) {
 		LOGGER.info("delete user by user id " + userId);
         return userService.deleteUserById(userId);
     }
 	
 	@DeleteMapping("/users")
-    public String deleteUser(@RequestBody User user) {
+    public User deleteUser(@RequestBody User user) {
 		LOGGER.info("delete user:" + user);
         return userService.deleteUser(user);
     }
