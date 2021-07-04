@@ -2,8 +2,11 @@ package com.athensoft.prototype.mvc.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,103 +15,110 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.athensoft.prototype.error.exceptions.UserAlreadyExistsException;
 import com.athensoft.prototype.error.exceptions.UserNotFoundException;
+import com.athensoft.prototype.mvc.controller.UserController;
+import com.athensoft.prototype.mvc.dao.MembershipRepository;
 import com.athensoft.prototype.mvc.dao.UserRepository;
+import com.athensoft.prototype.mvc.entity.Membership;
 import com.athensoft.prototype.mvc.entity.User;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class UserService {
-	private final UserRepository repo;
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+	
+	private final UserRepository userRepo;
+	private final MembershipRepository membershipRepo;
 
-	public UserService(UserRepository repo) {
-		this.repo = repo;
+	public UserService(UserRepository repo, MembershipRepository membershipRepo) {
+		this.userRepo = repo;
+		this.membershipRepo = membershipRepo;
 	}
 
 	public ResponseEntity<List<User>> getUserListAll() {
-		List<User> userList = repo.findAll();
+		List<User> userList = userRepo.findAll();
 		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 
 	public ResponseEntity<User> getUserById(int userId) {
-		if (!repo.existsById(userId)) {
+		if (!userRepo.existsById(userId)) {
 			throw new UserNotFoundException(userId);
 		}
-		User user = repo.findById(userId).get();
+		User user = userRepo.findById(userId).get();
+		LOGGER.debug("user:" + user);
+		if (user.isHasMembership()) {
+			int membershipId = user.getMembership().getMembershipId();
+			Membership membership = membershipRepo.findById(membershipId).get();
+			user.setMembership(membership);
+		}
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
-	public ResponseEntity<User> createUser(User user) {
-		if (repo.existsById(user.getUserId())) {
+	public ResponseEntity<Map<String, Object>> createUser(Map<String, Object> map) {
+		
+		ObjectMapper objMapper = new ObjectMapper();
+		User user = objMapper.convertValue(map.get("user"), new TypeReference<User>() {});
+		Membership membership = objMapper.convertValue(map.get("membership"), new TypeReference<Membership>() {});
+		
+		LOGGER.debug("user:" + user);
+		LOGGER.debug("membership:" + membership);
+		
+		if (userRepo.existsById(user.getUserId())) {
 			throw new UserAlreadyExistsException(user);
 		}
-		return new ResponseEntity<>(repo.save(user), HttpStatus.CREATED);
+		
+		if (!userRepo.existsById(membership.getMembershipId())) {
+			membership = membershipRepo.save(membership);
+			map.replace("membership", membership);
+		}
+		user.setMembership(membership);
+		map.replace("user", userRepo.save(user));
+		return new ResponseEntity<>(map, HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<User> saveUser(User user) {
-		return new ResponseEntity<>(repo.save(user), HttpStatus.OK);
+		return new ResponseEntity<>(userRepo.save(user), HttpStatus.OK);
 	}
 
-	public ResponseEntity<User> updateUser(User user) {
+	public ResponseEntity<Map<String, Object>> updateUser(Map<String, Object> map) {
+		ObjectMapper objMapper = new ObjectMapper();
+		User user = objMapper.convertValue(map.get("user"), new TypeReference<User>() {});
+		Membership membership = objMapper.convertValue(map.get("membership"), new TypeReference<Membership>() {});
+		
+		LOGGER.debug("user:" + user);
+		LOGGER.debug("membership:" + membership);
+		
 		int userId = user.getUserId();
-		if (!repo.existsById(userId)) {
+		if (!userRepo.existsById(userId)) {
 			throw new UserNotFoundException(userId);
 		}
-		return new ResponseEntity<>(repo.save(user), HttpStatus.OK);
+		
+		if (!userRepo.existsById(membership.getMembershipId())) {
+			membership = membershipRepo.save(membership);
+			map.replace("membership", membership);
+		}
+		user.setMembership(membership);
+		map.replace("user", userRepo.save(user));
+		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 
 	public ResponseEntity<User> deleteUserById(int userId) {
-		if(!repo.existsById(userId)){
+		if(!userRepo.existsById(userId)){
 			throw new UserNotFoundException(userId);
 		}
-		User user = repo.findById(userId).get();
-		repo.deleteById(userId);
+		User user = userRepo.findById(userId).get();
+		userRepo.deleteById(userId);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 
 	}
 
 	public ResponseEntity<User> deleteUser(User user) {
 		int userId = user.getUserId();
-		if(!repo.existsById(userId)){
+		if(!userRepo.existsById(userId)){
 			throw new UserNotFoundException(userId);
 		}
-		repo.delete(user);
+		userRepo.delete(user);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 
 	}
-
-	public ResponseEntity<List<User>> createUsers(List<User> users) {
-		List<User> createdUsers = new ArrayList<>();
-		for (User user: users) {
-			if (repo.existsById(user.getUserId())) {
-				throw new UserAlreadyExistsException(user);
-			}
-			createdUsers.add(user);
-		}
-		return new ResponseEntity<>(repo.saveAll(createdUsers), HttpStatus.CREATED);
-	}
-
-	public ResponseEntity<List<User>> updateUsers(List<User> users) {
-		List<User> updatedUsers = new ArrayList<>();
-		for (User user: users) {
-			int userId = user.getUserId();
-			if (!repo.existsById(userId)) {
-				throw new UserNotFoundException(userId);
-			}
-			updatedUsers.add(user);
-		}
-		return new ResponseEntity<>(repo.saveAll(updatedUsers), HttpStatus.OK);
-	}
-	
-	public ResponseEntity<List<User>> deleteUsers(List<User> users) {
-		List<User> deletedUsers = new ArrayList<>();
-		for (User user: users) {
-			int userId = user.getUserId();
-			if (!repo.existsById(userId)) {
-				throw new UserNotFoundException(userId);
-			}
-			deletedUsers.add(user);
-		}
-		repo.deleteAllInBatch(deletedUsers);
-		return new ResponseEntity<>(deletedUsers, HttpStatus.OK);
-	}
-
 }

@@ -1,7 +1,7 @@
 package com.athensoft.prototype.mvc.controller;
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,15 +48,15 @@ public class UserController {
 	
 	
 	@PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-		LOGGER.debug("creating user:" + user);
-        return userService.saveUser(user);
+    public ResponseEntity<Map<String, Object>> createUser(@RequestBody Map<String, Object> map) {
+		LOGGER.debug("map:" + map);
+        return userService.createUser(map);
     }
 	
 	@PutMapping("/users")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-		LOGGER.debug("updating user:" + user);
-        return userService.saveUser(user);
+    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody Map<String, Object> map) {
+		LOGGER.debug("map:" + map);
+        return userService.updateUser(map);
     }
 	
 	@DeleteMapping("/users/{userId}")
@@ -69,24 +69,6 @@ public class UserController {
     public ResponseEntity<User> deleteUser(@RequestBody User user) {
 		LOGGER.debug("deleting user:" + user);
         return userService.deleteUser(user);
-    }
-	
-	@PostMapping("/users/batch")
-	public ResponseEntity<List<User>> createUsers(@RequestBody List<User> users) {
-		LOGGER.debug("creating users:" + users);
-        return userService.createUsers(users);
-    }
-	
-	@PutMapping("/users/batch")
-	public ResponseEntity<List<User>> updateUsers(@RequestBody List<User> users) {
-		LOGGER.debug("updating users:" + users);
-        return userService.updateUsers(users);
-    }
-	
-	@DeleteMapping("/users/batch")
-	public ResponseEntity<List<User>> deleteUsers(@RequestBody List<User> users) {
-		LOGGER.debug("deleting users:" + users);
-        return userService.deleteUsers(users);
     }
 
 }

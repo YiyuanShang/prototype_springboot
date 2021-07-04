@@ -6,9 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -36,17 +40,19 @@ public class User implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private UserStatus status;
 	
-	private boolean membership;
+	@Column(name = "membership")
+	private boolean hasMembership;
 	
-	@Column(nullable = true)
-	private Integer membership_id;
+	@OneToOne
+	@JoinColumn(name="membership_id")
+	private Membership membership;
 
 	public User() {}
 	
-	public User(String name, int age, boolean membership) {
+	public User(String name, int age, boolean hasMembership) {
 		this.name = name;
 		this.age = age;
-		this.membership = membership;
+		this.hasMembership = hasMembership;
 		this.status = UserStatus.ACTIVE;
 	}
 	
@@ -70,13 +76,31 @@ public class User implements Serializable{
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public boolean isMembership() {
+	
+	public UserStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
+	}
+
+	public boolean isHasMembership() {
+		return hasMembership;
+	}
+
+	public void setHasMembership(boolean hasMembership) {
+		this.hasMembership = hasMembership;
+	}
+
+	public Membership getMembership() {
 		return membership;
 	}
-	public void setMembership(boolean membership) {
+
+	public void setMembership(Membership membership) {
 		this.membership = membership;
 	}
-	
+
 	public UserStatus getUserStatus() {
 		return status;
 	}
@@ -85,28 +109,10 @@ public class User implements Serializable{
 		this.status = userStatus;
 	}
 
-	public int getMembership_id() {
-		return membership_id;
-	}
-
-	public void setMembership_id(int membership_id) {
-		this.membership_id = membership_id;
-	}
-
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", age=" + age + ", status=" + status + ", membership="
-				+ membership + ", membership_id=" + membership_id + "]";
+		return "User [userId=" + userId + ", name=" + name + ", age=" + age + ", status=" + status + ", hasMembership="
+				+ hasMembership + ", membership=" + membership + "]";
 	}
-
-	
-	
-	
-
-	
-	
-	
-	
-	
 
 }
