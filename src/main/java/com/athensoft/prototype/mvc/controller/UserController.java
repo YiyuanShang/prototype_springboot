@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.athensoft.prototype.mvc.entity.User;
 import com.athensoft.prototype.mvc.dao.UserRepository;
@@ -40,6 +41,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{userId}")
+	@ResponseBody
 	public ResponseEntity<User> getUserById(@PathVariable int userId) {
 		return userService.getUserById(userId);
 	}
@@ -69,5 +71,22 @@ public class UserController {
         return userService.deleteUser(user);
     }
 	
+	@PostMapping("/users/batch")
+	public ResponseEntity<List<User>> createUsers(@RequestBody List<User> users) {
+		LOGGER.debug("creating users:" + users);
+        return userService.createUsers(users);
+    }
+	
+	@PutMapping("/users/batch")
+	public ResponseEntity<List<User>> updateUsers(@RequestBody List<User> users) {
+		LOGGER.debug("updating users:" + users);
+        return userService.updateUsers(users);
+    }
+	
+	@DeleteMapping("/users/batch")
+	public ResponseEntity<List<User>> deleteUsers(@RequestBody List<User> users) {
+		LOGGER.debug("deleting users:" + users);
+        return userService.deleteUsers(users);
+    }
 
 }
