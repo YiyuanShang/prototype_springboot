@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.athensoft.prototype.error.controller.ErrorController;
-import com.athensoft.prototype.error.exceptions.PersonNotFoundException;
-import com.athensoft.prototype.error.exceptions.UserAlreadyExistsException;
-import com.athensoft.prototype.error.exceptions.UserNotFoundException;
+import com.athensoft.prototype.error.exceptions.CouponNotFoundException;
+
 
 @ControllerAdvice
 //@ControllerAdvice(annotations=RestController.class)
@@ -21,22 +19,12 @@ import com.athensoft.prototype.error.exceptions.UserNotFoundException;
 public class ExceptionHelper {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionHelper.class);
 	
-	@ExceptionHandler(PersonNotFoundException.class)
-	public ResponseEntity<String> handlePersonNotFoundException(PersonNotFoundException exception) {
+	
+	@ExceptionHandler(CouponNotFoundException.class)
+	public ResponseEntity<String> handleUserNotFoundException(CouponNotFoundException exception) {
 		LOGGER.error(exception.getMessage());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
 	}
 	
-	@ExceptionHandler(UserNotFoundException.class)
-	public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException exception) {
-		LOGGER.error(exception.getMessage());
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
-	}
-	
-	@ExceptionHandler(UserAlreadyExistsException.class)
-	public ResponseEntity<String> handleUserAlreadyExistsException(UserAlreadyExistsException exception) {
-		LOGGER.error(exception.getMessage());
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
-	}
 
 }
