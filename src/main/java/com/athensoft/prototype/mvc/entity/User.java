@@ -1,6 +1,7 @@
 package com.athensoft.prototype.mvc.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -20,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
-@Table(name = "prototype_user")
+@Table(name = "prototype_mvc_multi_field_user")
 @JsonInclude(Include.NON_EMPTY)
 public class User implements Serializable{
 	
@@ -28,7 +31,7 @@ public class User implements Serializable{
 
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
 	
@@ -36,24 +39,19 @@ public class User implements Serializable{
 	
 	private int age;
 	
-	@Column(columnDefinition = "ENUM('ACTIVE', 'INACTIVE', 'DELETED') DEFAULT 'ACTIVE'")
-	@Enumerated(EnumType.STRING)
-	private UserStatus status;
 	
 	@Column(name = "membership")
-	private boolean hasMembership;
+	private boolean membership;
 	
-	@OneToOne
-	@JoinColumn(name="membership_id")
-	private Membership membership;
+	@OneToMany(targetEntity = UserRelCoupon.class, mappedBy = "user", fetch = FetchType.EAGER)
+	private List<Coupon> myCoupons;
 
 	public User() {}
 	
 	public User(String name, int age, boolean hasMembership) {
 		this.name = name;
 		this.age = age;
-		this.hasMembership = hasMembership;
-		this.status = UserStatus.ACTIVE;
+		this.membership = hasMembership;
 	}
 	
 	public int getUserId() {
@@ -77,42 +75,15 @@ public class User implements Serializable{
 		this.age = age;
 	}
 	
-	public UserStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(UserStatus status) {
-		this.status = status;
-	}
 
 	public boolean isHasMembership() {
-		return hasMembership;
-	}
-
-	public void setHasMembership(boolean hasMembership) {
-		this.hasMembership = hasMembership;
-	}
-
-	public Membership getMembership() {
 		return membership;
 	}
 
-	public void setMembership(Membership membership) {
-		this.membership = membership;
+	public void setHasMembership(boolean hasMembership) {
+		this.membership = hasMembership;
 	}
 
-	public UserStatus getUserStatus() {
-		return status;
-	}
-
-	public void setUserStatus(UserStatus userStatus) {
-		this.status = userStatus;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", age=" + age + ", status=" + status + ", hasMembership="
-				+ hasMembership + ", membership=" + membership + "]";
-	}
+	
 
 }

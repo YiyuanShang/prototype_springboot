@@ -47,28 +47,28 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/users")
-    public ResponseEntity<Map<String, Object>> createUser(@RequestBody Map<String, Object> map) {
-		LOGGER.debug("map:" + map);
-        return userService.createUser(map);
-    }
-	
-	@PutMapping("/users")
-    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody Map<String, Object> map) {
-		LOGGER.debug("map:" + map);
-        return userService.updateUser(map);
-    }
-	
-	@DeleteMapping("/users/{userId}")
-    public ResponseEntity<User> deleteUserById(@PathVariable int userId) {
-		LOGGER.debug("deleting user id:" + userId);
-        return userService.deleteUserById(userId);
-    }
-	
-	@DeleteMapping("/users")
-    public ResponseEntity<User> deleteUser(@RequestBody User user) {
-		LOGGER.debug("deleting user:" + user);
-        return userService.deleteUser(user);
-    }
+//	@PostMapping("/users")
+//    public ResponseEntity<Map<String, Object>> createUser(@RequestBody Map<String, Object> map) {
+//		LOGGER.debug("map:" + map);
+//        return userService.createUser(map);
+//    }
+//	
+//	@PutMapping("/users")
+//    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody Map<String, Object> map) {
+//		LOGGER.debug("map:" + map);
+//        return userService.updateUser(map);
+//    }
+//	
+//	@DeleteMapping("/users/{userId}")
+//    public ResponseEntity<User> deleteUserById(@PathVariable int userId) {
+//		LOGGER.debug("deleting user id:" + userId);
+//        return userService.deleteUserById(userId);
+//    }
+//	
+//	@DeleteMapping("/users")
+//    public ResponseEntity<User> deleteUser(@RequestBody User user) {
+//		LOGGER.debug("deleting user:" + user);
+//        return userService.deleteUser(user);
+//    }
 
 }
