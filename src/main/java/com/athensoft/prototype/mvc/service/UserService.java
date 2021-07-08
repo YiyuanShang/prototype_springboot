@@ -1,13 +1,12 @@
 package com.athensoft.prototype.mvc.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.athensoft.prototype.error.exceptions.UserAlreadyExistsException;
 import com.athensoft.prototype.error.exceptions.UserNotFoundException;
@@ -16,57 +15,60 @@ import com.athensoft.prototype.mvc.entity.User;
 
 @Service
 public class UserService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 	private final UserRepository repo;
 
 	public UserService(UserRepository repo) {
 		this.repo = repo;
 	}
 
-	public List<User> getUserListAll() {
-		return repo.findAll();
+	public ResponseEntity<List<User>> getUserListAll() {
+		return ResponseEntity.ok(repo.findAll());
 	}
 
-	public User getUserById(int userId) {
-		if (!repo.existsById(userId)) {
-			throw new UserNotFoundException();
-		}
-		User user = repo.findById(userId).get();
-		return user;
+	public ResponseEntity<User> getUserById(int userId) {
+		User user = repo.findById(userId).orElseThrow(() -> new UserNotFoundException());
+
+		return ResponseEntity.ok(user);
 	}
 
-	public User createUser(User user) {
+	public ResponseEntity<User> createUser(User user) {
 		if (repo.existsById(user.getUserId())) {
 			throw new UserAlreadyExistsException();
 		}
-		return repo.save(user);
+		LOGGER.debug("create user:" + user);
+		return new ResponseEntity<>(repo.save(user), HttpStatus.CREATED);
 	}
 
-	public User saveUser(User user) {
-		return repo.save(user);
+	public ResponseEntity<User> saveUser(User user) {
+		return ResponseEntity.ok(repo.save(user));
 	}
 
-	public User updateUser(User user) {
+	public ResponseEntity<User> updateUser(User user) {
 		if (!repo.existsById(user.getUserId())) {
 			throw new UserNotFoundException();
 		}
-		return repo.save(user);
+		LOGGER.debug("update user:" + user);
+		return ResponseEntity.ok(repo.save(user));
 	}
 
-	public User deleteUserById(int userId) {
+	public ResponseEntity<User> deleteUserById(int userId) {
 		if (!repo.existsById(userId)) {
 			throw new UserNotFoundException();
 		}
 		User user = repo.findById(userId).get();
+		LOGGER.debug("delete user:" + user);
 		repo.deleteById(userId);
-		return user;
+		return ResponseEntity.ok(user);
 	}
 
-	public User deleteUser(User user) {
+	public ResponseEntity<User> deleteUser(User user) {
 		if (!repo.existsById(user.getUserId())) {
 			throw new UserNotFoundException();
 		}
+		LOGGER.debug("delete user:" + user);
 		repo.delete(user);
-		return user;
+		return ResponseEntity.ok(user);
 	}
 
 }

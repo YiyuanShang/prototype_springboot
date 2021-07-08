@@ -2,14 +2,17 @@ package com.athensoft.prototype.mvc.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "prototype_mvc_singlebo_user")
 public class User{
 	
 	@Id
@@ -22,6 +25,7 @@ public class User{
 	private int age;
 	
 	private boolean membership;
+	
 	
 	public User() {}
 	
@@ -57,11 +61,15 @@ public class User{
 	public void setMembership(boolean membership) {
 		this.membership = membership;
 	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", age=" + age + ", membership=" + membership + "]";
 	}
+	
+	
 
+	
 	
 
 	
