@@ -24,7 +24,7 @@ import com.athensoft.prototype.mvc.entity.User;
 import com.athensoft.prototype.mvc.service.UserService;
 
 
-
+@Controller
 public class UserController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	
