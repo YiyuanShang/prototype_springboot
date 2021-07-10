@@ -9,17 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.athensoft.prototype.entity.Person;
 import com.athensoft.prototype.error.exceptions.PersonNotFoundException;
-import com.athensoft.prototype.error.utils.ExceptionHelper;
+
+
 
 @RestController
 public class ErrorController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ErrorController.class);
 	
-	@GetMapping("/error1/notfound")
+	@GetMapping("/error1/personNotFound")
 	public Object getErrorNotFound() {
-		LOGGER.debug("entering /error1/notfound");
-		throw new PersonNotFoundException("Person Not Found Message");
+		LOGGER.debug("entering /error1/personNotFound");
+		throw new PersonNotFoundException();
+	}
+	
+	@GetMapping("/error1/personNotFound2")
+	public Object getErrorNotFound2() {
+		LOGGER.debug("entering /error1/personNotFound2");
+		throw new PersonNotFoundException(new Person("John Doe", 23));
 	}
 
 	

@@ -17,7 +17,7 @@ import com.athensoft.prototype.error.exceptions.PersonNotFoundException;
 
 //@ControllerAdvice
 //@ControllerAdvice(annotations=RestController.class)
-//@ControllerAdvice(basePackages = "com.prototype.error.controller")
+//@ControllerAdvice(basePackages = "com.athensoft.prototype.error.controller")
 //@ControllerAdvice(assignableTypes = {ErrorController.class})
 public class CustomizedResponseEntityExceptionHelper extends ResponseEntityExceptionHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomizedResponseEntityExceptionHelper.class);

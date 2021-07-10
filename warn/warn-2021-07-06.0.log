@@ -1,0 +1,12 @@
+[2021-07-06 15:02:23] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1356, SQLState: HY000
+[2021-07-06 15:06:42] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1062, SQLState: 23000
+[2021-07-06 15:08:21] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1062, SQLState: 23000
+[2021-07-06 15:13:56] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1062, SQLState: 23000
+[2021-07-06 15:30:55] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1062, SQLState: 23000
+[2021-07-06 15:33:36] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1062, SQLState: 23000
+[2021-07-06 15:38:18] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1062, SQLState: 23000
+[2021-07-06 20:47:12] -- [WARN ]: [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] -- SQL Error: 1146, SQLState: 42S02
+[2021-07-06 20:48:30] -- [WARN ]: [org.hibernate.engine.loading.internal.LoadContexts] -- HHH000100: Fail-safe cleanup (collections) : org.hibernate.engine.loading.internal.CollectionLoadContext@5c0c7aab<rs=HikariProxyResultSet@1205777932 wrapping Result set representing update count of -1>
+[2021-07-06 20:48:30] -- [WARN ]: [org.hibernate.engine.loading.internal.CollectionLoadContext] -- HHH000160: On CollectionLoadContext#cleanup, localLoadingCollectionKeys contained [1] entries
+[2021-07-06 20:49:04] -- [WARN ]: [org.hibernate.engine.loading.internal.LoadContexts] -- HHH000100: Fail-safe cleanup (collections) : org.hibernate.engine.loading.internal.CollectionLoadContext@dff207a<rs=HikariProxyResultSet@1061302861 wrapping Result set representing update count of -1>
+[2021-07-06 20:49:04] -- [WARN ]: [org.hibernate.engine.loading.internal.CollectionLoadContext] -- HHH000160: On CollectionLoadContext#cleanup, localLoadingCollectionKeys contained [1] entries
