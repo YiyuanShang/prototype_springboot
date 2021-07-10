@@ -48,13 +48,13 @@ public class UserController {
 	@PostMapping("/users")
     public User createUser(@RequestBody User user) {
 		LOGGER.info("create user:" + user);
-        return userService.saveUser(user);
+        return userService.createUser(user);
     }
 	
 	@PutMapping("/users")
     public User updateUser(@RequestBody User user) {
 		LOGGER.info("update user:" + user);
-        return userService.saveUser(user);
+        return userService.updateUser(user);
     }
 	
 	@DeleteMapping("/users/{userId}")
