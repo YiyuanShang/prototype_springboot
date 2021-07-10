@@ -38,3 +38,8 @@ build/
 /debug/
 /error/
 /info/
+
+### maven ###
+.mvn
+mvnw
+mvnw.cmd
