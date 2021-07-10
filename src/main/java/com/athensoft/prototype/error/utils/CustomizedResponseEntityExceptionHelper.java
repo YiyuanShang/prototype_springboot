@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.athensoft.prototype.error.controller.ErrorController;
-import com.athensoft.prototype.error.entity.ErrorDetails;
-import com.athensoft.prototype.error.exceptions.PersonNotFoundException;
-
 //@ControllerAdvice
 //@ControllerAdvice(annotations=RestController.class)
 //@ControllerAdvice(basePackages = "com.athensoft.prototype.error.controller")

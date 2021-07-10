@@ -7,17 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+
 @Entity
 @Table(name = "prototype_mvc_singlebo_template_user")
-public class User{
+public class User implements Serializable{
 	
+	private static final long serialVersionUID = 8127518097406714799L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
-	@NotEmpty(message = "Name is required")
 	private String name;
 	
 	private int age;
