@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.athensoft.prototype.mvc.entity.User;
 import com.athensoft.prototype.mvc.dao.UserRepository;
@@ -25,7 +26,7 @@ import com.athensoft.prototype.mvc.service.UserService;
 
 
 
-@Controller
+@RestController
 public class UserController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	

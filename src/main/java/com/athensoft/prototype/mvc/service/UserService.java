@@ -28,15 +28,16 @@ public class UserService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 	
 	private final UserRepository userRepo;
-	private final UserCouponRepository userCouponRepo;
+	private final UserCouponRepository relRepo;
 
-	public UserService(UserRepository repo, UserCouponRepository userCouponRepo) {
+	public UserService(UserRepository repo, UserCouponRepository relRepo) {
 		this.userRepo = repo;
-		this.userCouponRepo = userCouponRepo;
+		this.relRepo = relRepo;
 	}
 
 	public ResponseEntity<List<User>> getUserListAll() {
 		List<User> userList = userRepo.findAll();
+		
 		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 

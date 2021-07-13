@@ -23,12 +23,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
-@Table(name = "prototype_mvc_multi_field_user")
+@Table(name = "prototype_mvc_multibo_user")
 @JsonInclude(Include.NON_EMPTY)
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 742992239461620390L;
-
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

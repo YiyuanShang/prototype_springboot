@@ -9,7 +9,7 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "prototype_mvc_multi_field_user_rel_coupon")
+@Table(name = "prototype_mvc_multibo_user_rel_coupon")
 public class UserRelCoupon {
 	@EmbeddedId
 	UserCouponId userCouponId;
