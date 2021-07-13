@@ -10,11 +10,11 @@ public class UserNotFoundException extends RuntimeException {
 	}
 	
 	public UserNotFoundException(User user) {
-		super("User " + user.getUserId() + " " + user.getName() + " of " + user.getAge() + " years old is not found!");
+		super("User " +  user.getName() + " of " + user.getAge() + " years old, Id " + user.getUserId() + ", is not found!");
 	}
 	
 	public UserNotFoundException(int userId) {
-		super("User " + userId + " is not found!");
+		super("User Id " + userId + " is not found!");
 	}
 	
 	public UserNotFoundException(String message) {

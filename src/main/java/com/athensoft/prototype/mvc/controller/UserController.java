@@ -5,8 +5,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,41 +30,77 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@GetMapping("/users")
-	public List<User> getUserListAll() {
-		List<User> userList = userService.getUserListAll();
-		LOGGER.debug("user list:" + userList);
-		return userList;
+	@GetMapping("/user/signup")
+	public String gotoUserSignUp(User user) {
+		return "user/user_create";
 	}
-	
-	@GetMapping("/users/{userId}")
-	public User getUserById(@PathVariable int userId) {
-		return userService.getUserById(userId);
-	}
-	
-	@PostMapping("/users")
-    public User createUser(@RequestBody User user) {
-		LOGGER.info("create user:" + user);
-        return userService.createUser(user);
-    }
-	
-	@PutMapping("/users")
-    public User updateUser(@RequestBody User user) {
-		LOGGER.info("update user:" + user);
-        return userService.updateUser(user);
-    }
-	
-	@DeleteMapping("/users/{userId}")
-    public User deleteUserById(@PathVariable int userId) {
-		LOGGER.info("delete user by user id " + userId);
-        return userService.deleteUserById(userId);
-    }
-	
-	@DeleteMapping("/users")
-    public User deleteUser(@RequestBody User user) {
-		LOGGER.info("delete user:" + user);
-        return userService.deleteUser(user);
-    }
-	
 
+	@GetMapping("/user/list")
+	public String gotoUserList(Model model) {
+		LOGGER.debug("entering /user/list");
+		List<User> userList = userService.getUserListAll();
+
+		LOGGER.debug("returning user list:" + userList);
+		model.addAttribute("userList", userList);
+
+		return "user/user_list";
+	}
+
+	@GetMapping("/user/edit/{id}")
+	public String showUpdateForm(@PathVariable("id") String id, Model model) {
+		LOGGER.debug("entering showUpdateForm id:" + id);
+		int userId = Integer.valueOf(id);
+		User user = userService.getUserById(userId);
+
+		model.addAttribute("user", user);
+		return "user/user_edit";
+	}
+
+	@GetMapping("/user/delete/{id}")
+	public String showDeleteForm(@PathVariable("id") String id, Model model) {
+		LOGGER.debug("entering showDeleteForm id:" + id);
+		int userId = Integer.valueOf(id);
+		User user = userService.getUserById(userId);
+
+		model.addAttribute("user", user);
+		return "user/user_delete";
+	}
+
+	@PostMapping("/user/add")
+	public String addUser(@ModelAttribute("user") User user, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "user/user_create";
+		}
+		userService.createUser(user);
+
+		return "redirect:/user/list";
+	}
+
+	@PostMapping("/user/update")
+	public String updateUser(@ModelAttribute("user") User user, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			int userId = user.getUserId();
+			user.setUserId(userId);
+			return "user/user_edit";
+		}
+
+		LOGGER.info("update user:" + user);
+		userService.updateUser(user);
+
+		return "redirect:/user/list";
+	}
+
+	@PostMapping("/user/delete")
+	public String deleteUser(@ModelAttribute("user") User user, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			int userId = user.getUserId();
+			user.setUserId(userId);
+			return "user/user_delete";
+		}
+
+		LOGGER.info("delete user:" + user);
+		userService.deleteUser(user);
+
+		return "redirect:/user/list";
+	}
 }
