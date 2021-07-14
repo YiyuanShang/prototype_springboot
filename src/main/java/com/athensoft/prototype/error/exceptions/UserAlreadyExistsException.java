@@ -12,6 +12,10 @@ public class UserAlreadyExistsException extends RuntimeException {
 		super("User already exists:" + user);
 	}
 	
+	public UserAlreadyExistsException(int userId) {
+		super("User " + userId + " already exists!");
+	}
+	
 	public UserAlreadyExistsException(String message) {
 		super(message);
 	}

@@ -67,6 +67,13 @@ public class UserRelCoupon {
 	public void setCouponNum(int couponNum) {
 		this.couponNum = couponNum;
 	}
+
+	@Override
+	public String toString() {
+		return "UserRelCoupon user=" + user + ", coupon=" + coupon + ", couponNum="
+				+ couponNum + "]";
+	}
+	
 	
 	
 }

@@ -73,16 +73,30 @@ public class User implements Serializable{
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
 
-	public boolean isHasMembership() {
+	public boolean isMembership() {
 		return membership;
 	}
 
-	public void setHasMembership(boolean hasMembership) {
-		this.membership = hasMembership;
+	public void setMembership(boolean membership) {
+		this.membership = membership;
 	}
 
+	public List<Coupon> getMyCoupons() {
+		return myCoupons;
+	}
+
+	public void setMyCoupons(List<Coupon> myCoupons) {
+		this.myCoupons = myCoupons;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", name=" + name + ", age=" + age + ", membership=" + membership
+				+ ", myCoupons=" + myCoupons + "]";
+	}
+
+	
 	
 
 }

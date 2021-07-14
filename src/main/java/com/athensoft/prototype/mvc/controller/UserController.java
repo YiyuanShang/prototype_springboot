@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,15 +45,13 @@ public class UserController {
 	@GetMapping("/users/{userId}")
 	@ResponseBody
 	public ResponseEntity<User> getUserById(@PathVariable int userId) {
-		return userService.getUserById(userId);
+		return ResponseEntity.ok(userService.getUserById(userId));
 	}
 	
-	
-//	@PostMapping("/users")
-//    public ResponseEntity<Map<String, Object>> createUser(@RequestBody Map<String, Object> map) {
-//		LOGGER.debug("map:" + map);
-//        return userService.createUser(map);
-//    }
+	@PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+    }
 //	
 //	@PutMapping("/users")
 //    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody Map<String, Object> map) {

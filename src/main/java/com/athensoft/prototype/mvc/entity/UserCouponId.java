@@ -10,16 +10,30 @@ import javax.persistence.Embeddable;
 public class UserCouponId implements Serializable{
 	private static final long serialVersionUID = -8044124390788541293L;
 	
-	@Column(name = "user_id")
 	private int userId;
 	
-	@Column(name = "coupon_id")
 	private int couponId;
 
 	public UserCouponId() {}
 	
 	public UserCouponId(int userId, int couponId) {
 		this.userId = userId;
+		this.couponId = couponId;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getCouponId() {
+		return couponId;
+	}
+
+	public void setCouponId(int couponId) {
 		this.couponId = couponId;
 	}
 
