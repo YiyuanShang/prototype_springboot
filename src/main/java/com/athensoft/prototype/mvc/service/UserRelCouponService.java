@@ -16,7 +16,7 @@ public class UserRelCouponService {
 		this.relRepo = relRepo;
 	}
 
-	public void saveUserRelCoupon(User user, Coupon coupon, int couponNum) {
+	public void createOrIncUserRelCoupon(User user, Coupon coupon, int couponNum) {
 		// if the relation exists, increment coupon number
 		if (relRepo.existsByUserAndCoupon(user, coupon)) {
 			UserRelCoupon rel = relRepo.findByUserAndCoupon(user, coupon);
@@ -24,6 +24,24 @@ public class UserRelCouponService {
 		}
 		// else, create the relation
 		relRepo.save(new UserRelCoupon(user, coupon, couponNum));
+	}
+	
+	public void createUserRelCoupon(User user, Coupon coupon, int couponNum) {
+		relRepo.save(new UserRelCoupon(user, coupon, couponNum));
+	}
+	
+	public void updateUserRelCoupon(User user, Coupon coupon, int couponNum) {
+		UserRelCoupon rel = relRepo.findByUserAndCoupon(user, coupon);
+		rel.setCouponNum(couponNum);
+		relRepo.save(rel);
+	}
+	
+	public void deleteUserRelCoupon(User user, Coupon coupon) {
+		relRepo.deleteByUserAndCoupon(user, coupon);
+	}
+	
+	public void deleteUserRelCoupon(int userId) {
+		relRepo.deleteByUser_userId(userId);
 	}
 	
 }

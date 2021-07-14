@@ -23,4 +23,8 @@ public interface UserCouponRepository extends JpaRepository<UserRelCoupon, UserC
 	UserRelCoupon findByUserAndCoupon(User user, Coupon coupon);
 	
 	boolean existsByUserAndCoupon(User user, Coupon coupon);
+	
+	void deleteByUserAndCoupon(User user, Coupon coupon);
+	
+	void deleteByUser_userId(int userId);
 }

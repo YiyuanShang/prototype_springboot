@@ -39,7 +39,7 @@ public class UserController {
 	
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> getUserListAll() {
-		return userService.getUserListAll();
+		return ResponseEntity.ok(userService.getUserListAll());
 	}
 	
 	@GetMapping("/users/{userId}")
@@ -52,23 +52,23 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
     }
-//	
-//	@PutMapping("/users")
-//    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody Map<String, Object> map) {
-//		LOGGER.debug("map:" + map);
-//        return userService.updateUser(map);
-//    }
-//	
-//	@DeleteMapping("/users/{userId}")
-//    public ResponseEntity<User> deleteUserById(@PathVariable int userId) {
-//		LOGGER.debug("deleting user id:" + userId);
-//        return userService.deleteUserById(userId);
-//    }
-//	
-//	@DeleteMapping("/users")
-//    public ResponseEntity<User> deleteUser(@RequestBody User user) {
-//		LOGGER.debug("deleting user:" + user);
-//        return userService.deleteUser(user);
-//    }
+	
+	@PutMapping("/users")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.updateUser(user));
+    }
+	
+	
+	@DeleteMapping("/users/{userId}")
+    public ResponseEntity<User> deleteUserById(@PathVariable int userId) {
+		LOGGER.debug("deleting user id:" + userId);
+        return ResponseEntity.ok(userService.deleteUserById(userId));
+    }
+	
+	@DeleteMapping("/users")
+    public ResponseEntity<User> deleteUser(@RequestBody User user) {
+		LOGGER.debug("deleting user:" + user);
+        return ResponseEntity.ok(userService.deleteUser(user));
+    }
 
 }
