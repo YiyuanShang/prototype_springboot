@@ -17,7 +17,12 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
  */
 @Configuration
 public class QueryStringConfig implements WebMvcConfigurer {
-
+//	@Bean(name = "localeResolver")
+//	public LocaleResolver acceptHeaderLocaleResolver() {
+//		AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
+//		return resolver;
+//	}
+	
 //	@Bean(name = "localeResolver")
 //	public LocaleResolver sessionLocaleResolver() {
 //		SessionLocaleResolver resolver = new SessionLocaleResolver();
