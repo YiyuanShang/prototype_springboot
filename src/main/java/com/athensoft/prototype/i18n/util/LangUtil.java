@@ -1,21 +1,12 @@
-package com.prototype.i18n.config;
+package com.athensoft.prototype.i18n.util;
 
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-
-import com.prototype.i18n.util.LanguageCode;
-
-
-public class UrlPathCookieLocaleResolver extends CookieLocaleResolver{
-	public Locale resolveUrlPathLocale(HttpServletRequest request) {
-		System.out.println("entering overriden resolveLocale");
-		Locale locale = super.resolveLocale(request);
-		System.out.println("locale before:" + locale);
-		System.out.println("processed by " + this.getClass());
-		
+public class LangUtil {
+	public static Locale findLocaleFromRequest(HttpServletRequest request) {
+		Locale locale = Locale.ENGLISH;
 		String url = request.getRequestURI();
 
 		String prefixEn = request.getServletContext().getContextPath() + "/" + LanguageCode.en + "/";
@@ -29,8 +20,8 @@ public class UrlPathCookieLocaleResolver extends CookieLocaleResolver{
 		} else if (url.startsWith(prefixZh)) {
 			locale = Locale.CHINESE;
 		}
-		System.out.println("locale after:" + locale + "\n");
+		
 		return locale;
 	}
-	
+
 }

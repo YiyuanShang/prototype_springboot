@@ -1,4 +1,4 @@
-package com.prototype.i18n.config;
+package com.athensoft.prototype.i18n.config;
 
 import java.util.Locale;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.LocaleResolver;
 
-import com.prototype.i18n.util.LanguageCode;
+import com.athensoft.prototype.i18n.util.LanguageCode;
 
 
 public class UrlPathLocaleResolver implements LocaleResolver {

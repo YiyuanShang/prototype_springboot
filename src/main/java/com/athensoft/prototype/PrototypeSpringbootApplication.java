@@ -1,4 +1,4 @@
-package com.prototype;
+package com.athensoft.prototype;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

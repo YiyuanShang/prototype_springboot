@@ -1,4 +1,4 @@
-package com.prototype.i18n.config;
+package com.athensoft.prototype.i18n.config;
 
 import java.util.Locale;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import com.prototype.i18n.util.LanguageCode;
+import com.athensoft.prototype.i18n.util.LanguageCode;
 
 
 public class UrlPathSessionLocaleResolver extends SessionLocaleResolver {

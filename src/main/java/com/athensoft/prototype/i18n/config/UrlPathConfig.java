@@ -1,4 +1,4 @@
-package com.prototype.i18n.config;
+package com.athensoft.prototype.i18n.config;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
-import com.prototype.i18n.util.LanguageCode;
+import com.athensoft.prototype.i18n.util.LanguageCode;
 
 
 /**
@@ -22,29 +22,42 @@ import com.prototype.i18n.util.LanguageCode;
  */
 @Configuration
 public class UrlPathConfig implements WebMvcConfigurer{
-	@Bean(name = "localeResolver")
-	public LocaleResolver sessionLocaleResolver() {
-		UrlPathSessionLocaleResolver resolver = new UrlPathSessionLocaleResolver();
-		resolver.setDefaultLocale(Locale.ENGLISH);
-		return resolver;
-	}
+//	@Bean(name = "localeResolver")
+//	public LocaleResolver sessionLocaleResolver() {
+//		UrlPathSessionLocaleResolver resolver = new UrlPathSessionLocaleResolver();
+//		resolver.setDefaultLocale(Locale.ENGLISH);
+//		return resolver;
+//	}
+//	
+//	@Bean(name = "localeResolver")
+//	public LocaleResolver urlPathLocaleResolver() {
+//		UrlPathLocaleResolver resolver = new UrlPathLocaleResolver();
+//		resolver.setDefaultLocale(Locale.ENGLISH);
+//		return resolver;
+//	}
+//
+//		
+//	@Bean(name = "localeResolver")
+//	public LocaleResolver cookieLocaleResolver() {
+//		UrlPathCookieLocaleResolver resolver = new UrlPathCookieLocaleResolver();
+//		resolver.setDefaultLocale(Locale.ENGLISH);
+//		return resolver;
+//	}
 	
 	@Bean(name = "localeResolver")
-	public LocaleResolver urlPathLocaleResolver() {
-		UrlPathLocaleResolver resolver = new UrlPathLocaleResolver();
-		resolver.setDefaultLocale(Locale.ENGLISH);
-		return resolver;
-	}
-
+	public LocaleResolver acceptHeaderLocaleResolver() {
+		UrlPathAcceptHeaderLocaleResolver resolver = new UrlPathAcceptHeaderLocaleResolver();
+//		resolver.setDefaultLocale(Locale.ENGLISH);
 		
-	@Bean(name = "localeResolver")
-	public LocaleResolver cookieLocaleResolver() {
-		UrlPathCookieLocaleResolver resolver = new UrlPathCookieLocaleResolver();
-		resolver.setDefaultLocale(Locale.ENGLISH);
+		// set supported locales
+		List<LanguageCode> languageCodes = Arrays.asList(LanguageCode.values());
+		List<Locale> locales = new ArrayList<>();
+		languageCodes.forEach(langCode -> locales.add(new Locale(langCode.toString())));
+		System.out.println("setting supported locales");
+		resolver.setSupportedLocales(locales);
+		
 		return resolver;
 	}
-	
-	
 
 	@Override
 	public void addInterceptors(InterceptorRegistry interceptorRegistry) {
