@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LangUtil {
 	public static Locale findLocaleFromRequest(HttpServletRequest request) {
-		Locale locale = Locale.ENGLISH;
+		Locale locale =  null;
 		String url = request.getRequestURI();
 
 		String prefixEn = request.getServletContext().getContextPath() + "/" + LanguageCode.en + "/";
